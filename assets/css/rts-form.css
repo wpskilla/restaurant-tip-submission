@@ -1,0 +1,276 @@
+/**
+ * Restaurant Tip Submission – form styles.
+ *
+ * Methodology : BEM-ish, prefixed with .rts-
+ * Responsive  : single-column on mobile, comfortable on desktop.
+ * Accessible  : focus-visible outlines, high-contrast error states,
+ *               spinner that respects prefers-reduced-motion.
+ */
+
+/* ── Reset / base ─────────────────────────────────────────────────────── */
+
+.rts-form-wrap *,
+.rts-form-wrap *::before,
+.rts-form-wrap *::after {
+	box-sizing: border-box;
+}
+
+/* ── Skip link ────────────────────────────────────────────────────────── */
+/*
+ * Placed in the theme's header template as:
+ *   <a class="rts-skip-link screen-reader-text" href="#main-content">
+ *     Skip to main content
+ *   </a>
+ * We style it here so the plugin ships a complete accessibility story.
+ */
+.rts-skip-link {
+	position: absolute;
+	top: -100%;
+	left: 0;
+	z-index: 9999;
+	background: #1a1a1a;
+	color: #fff;
+	padding: 0.75rem 1.25rem;
+	font-size: 1rem;
+	text-decoration: none;
+	border-radius: 0 0 4px 0;
+	transition: top 0.2s;
+}
+.rts-skip-link:focus {
+	top: 0;
+}
+
+/* ── Wrapper ──────────────────────────────────────────────────────────── */
+
+.rts-form-wrap {
+	max-width: 640px;
+	margin: 2rem auto;
+	padding: 2rem 1.5rem;
+	background: #fff;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	font-family: inherit;
+}
+
+/* ── Heading ──────────────────────────────────────────────────────────── */
+
+.rts-form-heading {
+	margin: 0 0 0.5rem;
+	font-size: 1.5rem;
+	line-height: 1.3;
+	color: #1a1a1a;
+}
+
+.rts-form-intro {
+	margin: 0 0 1.5rem;
+	color: #555;
+	font-size: 0.9375rem;
+	line-height: 1.6;
+}
+
+/* ── Status region ────────────────────────────────────────────────────── */
+
+.rts-form-status {
+	min-height: 0;
+	margin-bottom: 0;
+	padding: 0;
+	border-radius: 4px;
+	font-size: 0.9375rem;
+	font-weight: 500;
+	line-height: 1.5;
+	transition: all 0.25s ease;
+}
+
+.rts-form-status:not(:empty) {
+	padding: 0.875rem 1rem;
+	margin-bottom: 1.25rem;
+}
+
+.rts-form-status--success {
+	background: #ecfdf5;
+	border: 1px solid #6ee7b7;
+	color: #065f46;
+}
+
+.rts-form-status--error {
+	background: #fef2f2;
+	border: 1px solid #fca5a5;
+	color: #991b1b;
+}
+
+/* ── Field groups ─────────────────────────────────────────────────────── */
+
+.rts-field-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	margin-bottom: 1.125rem;
+}
+
+.rts-label {
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: #222;
+}
+
+.rts-required {
+	color: #c0392b;
+	margin-left: 2px;
+}
+
+/* ── Inputs ───────────────────────────────────────────────────────────── */
+
+.rts-input {
+	width: 100%;
+	padding: 0.625rem 0.75rem;
+	font-size: 1rem;
+	font-family: inherit;
+	color: #1a1a1a;
+	background: #fafafa;
+	border: 2px solid #cbd5e1;
+	border-radius: 6px;
+	transition: border-color 0.15s, box-shadow 0.15s;
+	appearance: none;
+}
+
+.rts-input:hover {
+	border-color: #94a3b8;
+}
+
+.rts-input:focus {
+	outline: none;
+	border-color: #3b82f6;
+	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+	background: #fff;
+}
+
+/* Error state */
+.rts-input--error {
+	border-color: #ef4444;
+	background: #fff5f5;
+}
+
+.rts-input--error:focus {
+	border-color: #dc2626;
+	box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+}
+
+.rts-textarea {
+	resize: vertical;
+	min-height: 130px;
+}
+
+/* ── Field error messages ─────────────────────────────────────────────── */
+
+.rts-field-error {
+	font-size: 0.8125rem;
+	color: #dc2626;
+	font-weight: 500;
+	min-height: 1em; /* Reserve space to avoid layout shift */
+}
+
+/* ── Required note ────────────────────────────────────────────────────── */
+
+.rts-required-note {
+	font-size: 0.8125rem;
+	color: #6b7280;
+	margin: 0 0 1.25rem;
+}
+
+/* ── Submit area ──────────────────────────────────────────────────────── */
+
+.rts-submit-wrap {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.rts-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.6875rem 1.5rem;
+	font-size: 1rem;
+	font-weight: 600;
+	font-family: inherit;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+}
+
+.rts-btn:focus-visible {
+	outline: 3px solid #3b82f6;
+	outline-offset: 3px;
+}
+
+.rts-btn--primary {
+	background: #2563eb;
+	color: #fff;
+}
+
+.rts-btn--primary:hover:not(:disabled) {
+	background: #1d4ed8;
+}
+
+.rts-btn--primary:active:not(:disabled) {
+	transform: translateY(1px);
+}
+
+.rts-btn:disabled {
+	opacity: 0.65;
+	cursor: not-allowed;
+}
+
+/* ── Spinner ──────────────────────────────────────────────────────────── */
+
+.rts-btn-spinner {
+	display: none;
+	width: 1em;
+	height: 1em;
+	border: 2px solid rgba(255, 255, 255, 0.4);
+	border-top-color: #fff;
+	border-radius: 50%;
+}
+
+.rts-btn-spinner--active {
+	display: block;
+	animation: rts-spin 0.7s linear infinite;
+}
+
+@keyframes rts-spin {
+	to { transform: rotate(360deg); }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+	.rts-btn-spinner--active {
+		animation: none;
+		border: 2px solid rgba(255, 255, 255, 0.9);
+	}
+	.rts-input,
+	.rts-btn,
+	.rts-form-status {
+		transition: none;
+	}
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+	.rts-form-wrap {
+		padding: 1.25rem 1rem;
+		border-radius: 0;
+		border-left: none;
+		border-right: none;
+		margin: 0;
+	}
+
+	.rts-submit-wrap {
+		justify-content: stretch;
+	}
+
+	.rts-btn {
+		width: 100%;
+		justify-content: center;
+	}
+}
